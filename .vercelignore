@@ -1,6 +1,5 @@
-api/routes/**
-api/controllers/**
-api/models/**
-api/middleware/**
-api/utils/**
-api/services/**
+api/src/**
+node_modules
+.git
+.env
+.env.local

@@ -4,18 +4,27 @@
   "installCommand": "cd api && npm install",
   "builds": [
     {
-      "src": "api/src/index.js",
-      "use": "@vercel/node"
+      "src": "api/dist/index.js",
+      "use": "@vercel/node",
+      "config": {
+        "zeroConfig": true
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/src/index.js"
+      "dest": "api/dist/index.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/src/index.js"
+      "dest": "api/dist/index.js"
     }
-  ]
+  ],
+  "functions": {
+    "api/dist/index.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  }
 }
