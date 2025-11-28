@@ -27,6 +27,7 @@
   "author": "toan@tabvn.com",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.86.0",
     "archiver": "^2.1.1",
     "aws-sdk": "^2.286.2",
     "bcryptjs": "^2.4.3",

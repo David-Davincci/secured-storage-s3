@@ -7,12 +7,16 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import multer from "multer";
 import path from "path";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import sequelize, { connectDB } from "./db/database.js";
 import { User, File, Post } from "./db/models/index.js";
 import AppRouter from "./router.js";
 import nodemailer from "nodemailer";
-import { smtp, s3Config, s3Region, s3Bucket } from "./config";
+import { smtp, s3Config, s3Region, s3Bucket } from "./config.js";
 
 import AWS from "aws-sdk";
 import multerS3 from "multer-s3";

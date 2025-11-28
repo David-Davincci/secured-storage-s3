@@ -19,6 +19,12 @@ export const s3Config = {
 export const s3Region = process.env.AWS_REGION;
 export const s3Bucket = process.env.AWS_BUCKET;
 
+// Supabase Storage Configuration
+export const supabaseUrl = process.env.SUPABASE_URL;
+export const supabaseKey = process.env.SUPABASE_ANON_KEY;
+export const supabaseBucket = process.env.SUPABASE_STORAGE_BUCKET || 'encrypted-files';
+export const useSupabaseStorage = process.env.USE_SUPABASE_STORAGE === 'true' || !process.env.AWS_BUCKET;
+
 export const url = process.env.APP_URL || 'http://localhost:3000';
 
 export const jwtSecret = process.env.JWT_SECRET || 'your-secret-key-change-this-in-production';

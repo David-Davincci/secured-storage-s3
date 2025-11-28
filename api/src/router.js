@@ -1,10 +1,12 @@
 import path from "path";
-import { version } from "../package.json";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const { version } = require("../package.json");
 import _ from "lodash";
 import { User, File, Post } from "./db/models/index.js";
-import FileArchiver from "./archiver";
-import Email from "./email";
-import S3 from "./s3";
+import FileArchiver from "./archiver.js";
+import Email from "./email.js";
+import S3 from "./s3.js";
 import { authMiddleware, generateToken } from "./middleware/auth-middleware.js";
 import { encryptFile, decryptFile, generateRSAKeyPair } from "./utils/crypto-utils.js";
 import multerS3 from "multer-s3";
