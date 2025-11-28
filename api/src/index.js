@@ -10,7 +10,7 @@ import path from "path";
 
 import sequelize, { connectDB } from "./db/database.js";
 import { User, File, Post } from "./db/models/index.js";
-import AppRouter from "./router";
+import AppRouter from "./router.js";
 import nodemailer from "nodemailer";
 import { smtp, s3Config, s3Region, s3Bucket } from "./config";
 
@@ -75,9 +75,13 @@ connectDB()
 
     new AppRouter(app);
 
-    app.server.listen(process.env.PORT || PORT, () => {
-      console.log(`App is running on port ${app.server.address().port}`);
-    });
+    // In serverless environments (Vercel) we should not call listen().
+    // Export the app instead and let the platform invoke it.
+    if (!process.env.VERCEL && process.env.NODE_ENV !== 'serverless') {
+      app.server.listen(process.env.PORT || PORT, () => {
+        console.log(`App is running on port ${app.server.address().port}`);
+      });
+    }
   })
   .catch((err) => {
     console.error("Database connection error:", err);
