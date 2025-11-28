@@ -60,5 +60,6 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^4.9.0",
     "nodemon": "^1.19.4"
-  }
+  },
+  "type": "module"
 }
