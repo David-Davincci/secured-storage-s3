@@ -110,7 +110,7 @@ class Dashboard extends Component {
                         <div className="app-top-bar-right">
                             <div className="app-top-bar-right-inner">
                                 <ul className="user-profile-menu">
-                                    <li>Hello, {user?.name || user?.email}</li>
+                                    <li>Hello, {(user && user.name) || (user && user.email)}</li>
                                     <li className="user-signin-button" onClick={this.handleLogout}>
                                         Logout
                                     </li>

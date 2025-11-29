@@ -71,7 +71,8 @@ export const register = async (email, password, name) => {
         });
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Registration failed' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Registration failed' };
     }
 };
 
@@ -91,7 +92,8 @@ export const login = async (email, password) => {
 
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Login failed' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Login failed' };
     }
 };
 
@@ -103,7 +105,8 @@ export const verifyEmail = async (token) => {
         const response = await axios.post(`${API_URL}/auth/verify-email`, { token });
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Email verification failed' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Email verification failed' };
     }
 };
 
@@ -115,7 +118,8 @@ export const resendVerification = async (email) => {
         const response = await axios.post(`${API_URL}/auth/resend-verification`, { email });
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Failed to resend verification email' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Failed to resend verification email' };
     }
 };
 
@@ -127,7 +131,8 @@ export const forgotPassword = async (email) => {
         const response = await axios.post(`${API_URL}/auth/forgot-password`, { email });
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Failed to send password reset email' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Failed to send password reset email' };
     }
 };
 
@@ -139,7 +144,8 @@ export const resetPassword = async (token, password) => {
         const response = await axios.post(`${API_URL}/auth/reset-password`, { token, password });
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Password reset failed' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Password reset failed' };
     }
 };
 

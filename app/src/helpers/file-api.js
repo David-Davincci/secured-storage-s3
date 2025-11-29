@@ -11,7 +11,8 @@ export const getFiles = async () => {
         const response = await axios.get(`${API_URL}/files`);
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Failed to fetch files' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Failed to fetch files' };
     }
 };
 
@@ -23,7 +24,8 @@ export const getFile = async (id) => {
         const response = await axios.get(`${API_URL}/files/${id}`);
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Failed to fetch file' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Failed to fetch file' };
     }
 };
 
@@ -49,7 +51,8 @@ export const deleteFile = async (id) => {
         const response = await axios.delete(`${API_URL}/files/${id}`);
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Failed to delete file' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Failed to delete file' };
     }
 };
 
@@ -87,7 +90,8 @@ export const uploadFiles = async (files, toEmail, message, onProgress) => {
 
         return response.data;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Failed to upload files' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Failed to upload files' };
     }
 };
 
@@ -112,6 +116,7 @@ export const downloadFile = async (id, filename) => {
 
         return true;
     } catch (error) {
-        throw error.response?.data?.error || { message: 'Failed to download file' };
+        const errorData = error.response && error.response.data && error.response.data.error;
+        throw errorData || { message: 'Failed to download file' };
     }
 };
